@@ -1,0 +1,67 @@
+.board-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.board-container {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.column {
+  background: #f4f5f7;
+  padding: 15px;
+  width: 300px;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+button {
+  margin-bottom: 10px;
+  padding: 5px 8px;
+  cursor: pointer;
+}
+
+.task-card {
+  background: white;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  cursor: grab;
+  border-left: 6px solid #ccc;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.task-card.low {
+  border-left-color: green;
+}
+
+.task-card.medium {
+  border-left-color: orange;
+}
+
+.task-card.high {
+  border-left-color: red;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  background: #eee;
+}
+
+.activity-sidebar {
+  width: 300px;
+  background: #fafafa;
+  padding: 15px;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.activity-item {
+  margin-bottom: 10px;
+  font-size: 13px;
+}
