@@ -1,0 +1,32 @@
+<div class="dashboard">
+
+  <h2>Dashboard</h2>
+
+  <div class="stats">
+    <div class="card">
+      <h3>High Priority</h3>
+      <p>{{ stats.high || 0 }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Medium Priority</h3>
+      <p>{{ stats.medium || 0 }}</p>
+    </div>
+
+    <div class="card">
+      <h3>Low Priority</h3>
+      <p>{{ stats.low || 0 }}</p>
+    </div>
+  </div>
+
+  <button (click)="createBoard()">+ Create Board</button>
+
+  <div class="boards">
+    <div class="board-card"
+         *ngFor="let board of boards"
+         (click)="openBoard(board._id)">
+      {{ board.name }}
+    </div>
+  </div>
+
+</div>

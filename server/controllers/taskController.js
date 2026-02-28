@@ -1,3 +1,4 @@
+const Activity = require('../models/Activity');
 const Task = require('../models/Task');
 
 exports.createTask = async (req, res) => {
@@ -14,7 +15,13 @@ exports.createTask = async (req, res) => {
 
     await task.save();
 
-    // Real-time emit
+    await Activity.create({
+      board: req.body.boardId,
+      user: req.user._id,
+      action: `Created task "${task.title}"`
+    });
+
+    /* Real-time emit */
     req.io.emit("taskCreated", task);
 
     res.json(task);
@@ -30,6 +37,12 @@ exports.moveTask = async (req, res) => {
 
     task.column = req.body.newColumnId;
     await task.save();
+
+    await Activity.create({
+        board: task.board,
+        user: req.user._id,
+        action: `Moved task "${task.title}"`
+    });
 
     req.io.emit("taskMoved", task);
 

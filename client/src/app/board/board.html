@@ -1,0 +1,39 @@
+<div class="board-layout" *ngIf="board">
+
+  <div class="board-container">
+
+    <div class="column"
+         *ngFor="let column of board.columns"
+         cdkDropList
+         [cdkDropListData]="column.tasks"
+         (cdkDropListDropped)="drop($event, column._id)">
+
+      <h3>{{ column.name }}</h3>
+
+      <button (click)="addTask(column._id)">+ Add Task</button>
+
+      <div class="task-card"
+           *ngFor="let task of column.tasks"
+           cdkDrag
+           [ngClass]="task.priority">
+
+        <h4>{{ task.title }}</h4>
+        <span class="badge">{{ task.priority }}</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="activity-sidebar">
+    <h3>Activity</h3>
+
+    <div *ngFor="let act of activities" class="activity-item">
+      <strong>{{ act.user?.name }}</strong>
+      <p>{{ act.action }}</p>
+    </div>
+
+  </div>
+
+</div>
